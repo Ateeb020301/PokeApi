@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/Hjem.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/diagnose.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title> Hjem </title>
+</head>
+<body id="body">
+
+    <!-- Header --------------------------------------------------------------------------------------------------------->
+    <header id="header">
+
+        <div class="head-logo">
+            <h1>Diagnose<span>+</span></h1>
+        </div>
+        <div class="head-buttons">
+            <ul id="header_nav_ul3" class="header_nav_ul">
+                <li><button id="btn1" class="b1" onclick="fun9()">Dark</button></li>
+                <li><button id="btn2" class="b1">Sign up</button></li>
+            </ul>
+        </div>
+
+        <div class="head-menu">
+            <ul class="menu" id="menu-list">
+                <li><a id="active" href="#">Home</a></li>
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="#">Sign in</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main --------------------------------------------------------------------------------------------------------->
+    <section class="main-body">
+        <div id="form">
+            <!-- Menu oversikt -->
+            <ul id="form_ul" hidden>
+                <li id="uli1" class="form_ul_li">Personvern</li>
+                <li id="uli2" class="form_ul_li">Pasient</li>
+                <li id="uli3" class="form_ul_li">Symptomer</li>
+                <li id="uli4" class="form_ul_li">Resultater</li>
+
+                <li id="uli5" class="form_ul_li"><button id="btn3" class="b1" onclick="fun2()">Avbryt</button></li>
+            </ul>
+
+            <!-- Start -->
+            <div id="start">
+                <button id="btn4" onclick="fun1()">Start diagnosering</button>
+            </div>
+
+            <!-- Visningsboks -->
+            <div id="scheme" hidden>
+
+                <!-- Lysbilde 1 ------------------------------------------------------------------------------------------------------->
+                <div id="s1" hidden>
+
+                    <label>
+                        Les mer om vår <a href="#" class="text_links">Personvern</a>.
+                        Denne webapplikasjonen er et læringsprosjekt.
+                        Data som sendes vil ikke brukes til noen andre formål enn testing og de vil slettes når testingen er fedig.
+                    </label>
+                    <input id="s1_inp1" type="checkbox"><br>
+                    <p id="feil1" hidden>Du må aksptere personvern reglene for å gå videre! </p>
+                    <button id="s1_neste" class="sbtn" onclick="fun3()">Next</button>
+
+                </div>
+
+                <!-- Lysbilde 2 ------------------------------------------------------------------------------------------------------->
+                <div id="s2" hidden>
+
+                    <label>Name:</label>			<input id="s2_inp1" type="text" placeholder="Ola" required><br>
+                    <label>Last Name:</label>		<input id="s2_inp2" type="text" placeholder="Nordmann" required><br>
+                    <label>Age</label>	<input id="s2_inp3" type="text" placeholder="ddmmåååå" required><br>
+                    <label>E-mail:</label>			<input id="s2_inp4" type="text" placeholder="olan@gmail.com" required><br>
+                    <label>Phone:</label>			<input id="s2_inp5" type="text" placeholder="+47 97 86 53 21" required><br>
+                    Gender:
+                    <span id="span1">
+                        <label for="s2_inp9">Male</label>		<input type="radio" id="s2_inp9" name="kjonn" value="male">
+                        <label for="s2_inp10">Female</label>	<input type="radio" id="s2_inp10" name="kjonn" value="female">
+                    </span><br><br>
+                    <p id="feil2" hidden>Alle feltene må fylles!</p>
+                    <button id="s2_tilbake" class="sbtn" onclick="fun4()">Back</button> <button id="s2_neste" class="sbtn" onclick="fun5()">Next</button>
+
+                </div>
+
+                <!-- Lysbilde 3 ------------------------------------------------------------------------------------------------------->
+                <div id="s3" hidden>
+
+                    <!-- Q1 -->
+                    Locate the bodypart the symptom appeard at <br>
+                    <select id="selectBody" onchange="LocateBodyPart();">
+                        <option disabled>Choose body</option>
+                    </select><br>
+
+                    <!-- Q2 -->
+                    More specific <br>
+                    <select id="selectBodyPart" onchange="findSymptome()">
+                        <option disabled>Specific body part</option>
+                    </select>
+                    <br>
+
+                    <!-- Q3 -->
+                    Choose plausible Symptom <br>
+                    <select id="selectName" onchange="dropdown3()">
+                        <option disabled>Choose Symptome</option>
+                    </select> <br>
+
+                    <!-- Q4 -->
+                    Les om Symptom
+
+                    <br>
+                    <p id="feil3" hidden>Oppgi hvor du har smerte for å fullføre testen!</p>
+                    <button id="s3_tilbake" class="sbtn" onclick="fun6()">Back</button> <button id="s3_neste" class="sbtn" onclick="fun7()">Finish</button>
+                </div>
+
+                <!-- Lysbilde 4 ------------------------------------------------------------------------------------------------------->
+                <div id="s4" hidden>
+                    <p>Diagnose:</p>
+
+                    <table id="tabell" border="1px">
+                        <tr>
+                            <th>Accuracy level</th>
+                            <th>Diganose</th>
+                            <th>Les mer</th>
+                        </tr>
+                    </table>
+                    <p>
+                        Vår besjekden "primitiv" diagnosetest antar at du har <span id="resultat"></span>.
+                        Vi anbefaler at du hvender deg til din fastlege for en ytterligere undersøkelse.
+                        Les mer om <a id="resultat_a"></a> på HelseNorge sine nettsider.
+                    </p>
+                    <button class="sbtn" onclick="fun8()">Ta ny diagnosetest</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- <br>
+        <a href="home.html" class="btn btn-primary">Ta en ny Diganose</a>
+        -->
+        </div>
+    </section>
+</body>
+</html>
